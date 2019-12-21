@@ -1,17 +1,19 @@
-import React, { Component } from 'react'
-import './App.css'
+import * as React from 'react';
 
-class App extends Component {
+type Props = {
+  foo: number,
+  bar?: string,
+  doesNotExist: number,
+};
+
+
+class App extends React.Component<Props> {
   render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <h1 className="App-title">Мой топ фото</h1>
-        </header>
-        <p className="App-intro">Здесь будут мои самые залайканые фото</p>
-      </div>
-    )
+    this.props.doesNotExist; // Error! You did not define a `doesNotExist` prop.
+
+    return <div>{this.props.bar}</div>;
   }
 }
 
-export default App
+
+export default App;

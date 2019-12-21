@@ -3,17 +3,19 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "react": "^16.9.0",
-    "react-dom": "^16.9.0",
-    "react-redux": "^7.1.1",
-    "react-scripts": "3.1.2",
-    "redux": "^4.0.4"
+    "@react-pdf/renderer": "^1.6.8",
+    "babel-plugin-react-flow-props-to-prop-types": "^0.15.0",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0",
+    "react-scripts": "3.2.0",
+    "react-transition-group": "^4.3.0"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "generate": "npx babel-node scripts/generate-pdf.js"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -31,6 +33,9 @@
     ]
   },
   "devDependencies": {
-    "eslint": "^6.4.0"
+    "@babel/core": "^7.7.4",
+    "@babel/node": "^7.7.4",
+    "@babel/preset-flow": "^7.7.4",
+    "puppeteer": "^2.0.0"
   }
 }
