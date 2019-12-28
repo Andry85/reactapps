@@ -1,17 +1,13 @@
 import * as React from 'react';
 
-type Props = {
-  foo: number,
-  bar?: string,
-  doesNotExist: number,
-};
 
 
-class App extends React.Component<Props> {
+
+class App extends React.Component {
   render() {
-    this.props.doesNotExist; // Error! You did not define a `doesNotExist` prop.
-
-    return <div>{this.props.bar}</div>;
+    return (
+      <div>Hello</div>
+    )
   }
 }
 
