@@ -1,0 +1,25 @@
+.App {
+    width: 980px;
+    margin: 0 auto;
+    max-width: 100%;
+   
+}
+
+.photos {
+    list-style: none;
+    margin: 0;
+    padding: 25px 0 0 0;
+    display: flex;
+    flex-wrap: wrap;
+
+    li {
+        a {
+            display: flex;
+            height: 100%;
+
+            img {
+                height: 100%;
+            }
+        }
+    }
+}
