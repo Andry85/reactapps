@@ -10,17 +10,19 @@ function SearchPanel(props) {
   const [val, setVal] = useState('flowers');
   const [photos, setPhotos] = useState([]);
 
+  const [searchVal, setSearchVal] = useState('flowers');
+
   const changePhotos = (value) => {
     setVal(value)
   }
 
   const getPhotos = (value) => {
-    setVal(value)
+    setSearchVal(value)
   }
 
   useEffect(() => {
     
-    axios.get(`https://pixabay.com/api/?key=2953875-64107f3e4a827b9cba547e216&q=${val}&image_type=photo`)
+    axios.get(`https://pixabay.com/api/?key=2953875-64107f3e4a827b9cba547e216&q=${searchVal}&image_type=all&per_page=${props.toSearch}&page=${props.currentPage}`)
       .then(res => {
         const photos = res.data;
         setPhotos(photos);
@@ -28,7 +30,7 @@ function SearchPanel(props) {
     })
 
     
-  }, [val]);
+  }, [searchVal, props.currentPage]);
 
 
 
@@ -43,7 +45,7 @@ function SearchPanel(props) {
       <button
         onClick={() => getPhotos(val)}
       >
-        Get photo
+        Get the photos
       </button>
     </div>
   );

@@ -1,4 +1,18 @@
 .SearchPanel {
-   
+    display: flex;
+    padding: 15px 0;
+
+   input {
+    flex-grow: 1;
+    padding: 5px;
+    border: 1px solid #bbb;
+
+   }
+   button {
+       width: 150px;
+       border: 1px solid #bbb;
+       padding: 5px;
+       cursor: pointer;
+   }
 }
 
