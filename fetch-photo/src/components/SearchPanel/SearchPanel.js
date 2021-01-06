@@ -21,6 +21,8 @@ function SearchPanel(props) {
   }
 
   useEffect(() => {
+
+    console.log(props.currentPage);
     
     axios.get(`https://pixabay.com/api/?key=2953875-64107f3e4a827b9cba547e216&q=${searchVal}&image_type=all&per_page=${props.toSearch}&page=${props.currentPage}`)
       .then(res => {
