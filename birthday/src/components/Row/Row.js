@@ -1,10 +1,12 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import styles from './Row.module.scss';
 
-
+import {ColorContext} from '../../index';
 
 
 function Row(props) {
+
+  const colorName = useContext(ColorContext);
 
   const onDelete = (id) => {
     props.onDelete(id)
@@ -16,8 +18,8 @@ function Row(props) {
 
   return (
     <div className={styles.row}>
-      <h2 className={styles.row__name}>{props.name}</h2>
-      <div className={styles.row__data}> {props.data}</div>
+      <h2 className={styles.row__name} style={{ color: colorName}}>{props.name}</h2>
+      <div className={styles.row__data} style={{ color: colorName}}> {props.data}</div>
      
       <button 
         type="button" 

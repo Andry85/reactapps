@@ -1,8 +1,11 @@
 import React, { useState } from "react";
 import DatePicker from "react-datepicker";
-import styles from './Add.module.scss';
 
 import "react-datepicker/dist/react-datepicker.css";
+
+import styles from './Add.module.scss';
+
+
 
 
 
@@ -18,6 +21,10 @@ function Add(props) {
     props.setUserName('');
     props.setStartDate(new Date());
   }
+
+  const ExampleCustomInput = ({ value, onClick }) => (
+    <input type="text" value={value} className={styles.formWrapper__field} onClick={onClick} />
+  );
 
 
 
@@ -43,6 +50,7 @@ function Add(props) {
                 selected={props.startDate} 
                 onChange={date =>  props.setStartDate(date)}
                 dateFormat="dd/MM/yyyy" 
+                customInput={<ExampleCustomInput />}
                 />
               </div>
               <div className="col-md-12">
