@@ -1,0 +1,25 @@
+
+.row {
+  background: rgba(221, 221, 221, 0.5);
+  padding: 10px 10px;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  
+  button {
+      margin-left: 10px;
+  }
+
+
+  &__name {
+     font-size: 1rem;
+     margin: 0;
+     line-height: 1.5;
+  }
+  &__data {
+     padding-left: 45px;
+     margin-right: auto;
+  }
+
+}
+
