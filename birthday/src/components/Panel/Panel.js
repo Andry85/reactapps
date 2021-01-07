@@ -42,6 +42,9 @@ const people = [
 function Panel() {
 
   const [humans, setHumans] = useState(people);
+  const [startDate, setStartDate] = useState(new Date());
+  const [userName, setUserName] = useState('');
+  const [userId, setUserId] = useState(null);
   const [actionName, setActionName] = useState('+ Add a person');
 
   const setInfo = (name, startDate) => {
@@ -63,15 +66,38 @@ function Panel() {
 
     setHumans(prevVal => {
 
-      return [
-        ...prevVal,
-        {
-          id: prevVal.length,
-          name: name,
-          data: `${day}.${month}.${year}`
-        }
-      ];
+      if (actionName === 'Edit the person') {
+
+        return [
+          ...prevVal.slice(0, userId),
+          {
+            id: userId,
+            name: name,
+            data: `${day}.${month}.${year}`
+          },
+          ...prevVal.slice(userId + 1)
+        ];
+
+      } else {
+        return [
+          ...prevVal,
+          {
+            id: prevVal.length,
+            name: name,
+            data: `${day}.${month}.${year}`
+          }
+        ];
+      }
+
+     
+
     });
+
+    setActionName('+ Add a person');
+
+    console.log(userId);
+
+
   }
 
   const onDelete = (id) => {
@@ -83,9 +109,36 @@ function Panel() {
     });
   }
 
-  const onEdit = (id) => {
+  const onEdit = (id, name, data) => {
+    setUserName(name);
+    setUserId(id)
+    
+    const dataArr = data.split('.');
+    const [day, month, year] = dataArr;
+    let d = new Date();
+    d.setDate(day);
+    d.setMonth(month-1);
+    d.setFullYear(year);
+
+
+    setStartDate(d);
+
+    setActionName('Edit the person');
+
+    console.log(userId);
+
+  
 
   }
+
+  const setStartDateFun = (value) => {
+    setStartDate(value);
+  }
+
+  const setUserNameFun = (value) => {
+    setUserName(value);
+  }
+
 
 
   return (
@@ -105,7 +158,11 @@ function Panel() {
 
       <Add 
         setInfo={setInfo}
-        name = {actionName}
+        setStartDate = {setStartDateFun}
+        setUserName = {setUserNameFun}
+        startDate = {startDate}
+        userName = {userName}
+        actionName = {actionName}
       />
       
       

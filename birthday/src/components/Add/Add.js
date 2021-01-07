@@ -9,17 +9,17 @@ import "react-datepicker/dist/react-datepicker.css";
 
 function Add(props) {
 
-  const [startDate, setStartDate] = useState(new Date());
-
-  const [name, setName] = useState('');
+ 
 
  
 
-  const setInfo = (name, startDate) => {
-    props.setInfo(name, startDate);
-    setName('');
-    setStartDate(new Date());
+  const setInfo = (userName, startDate) => {
+    props.setInfo(userName, startDate);
+    props.setUserName('');
+    props.setStartDate(new Date());
   }
+
+
 
   return (
       <div className={styles.formWrapper}>
@@ -32,16 +32,16 @@ function Add(props) {
                   className="form-control" 
                   id="exampleFormControlInput1" 
                   placeholder="Your name"
-                  value={name}
+                  value={props.userName}
 
-                  onChange={(e) => setName(e.target.value)}
+                  onChange={(e) =>  props.setUserName(e.target.value)}
                 />
               </div>
               <div className="col-md-3">
                 <label className="form-label">Put the birthday:</label>
                 <DatePicker 
-                selected={startDate} 
-                onChange={date => setStartDate(date)}
+                selected={props.startDate} 
+                onChange={date =>  props.setStartDate(date)}
                 dateFormat="dd/MM/yyyy" 
                 />
               </div>
@@ -49,9 +49,9 @@ function Add(props) {
                 <button 
                   type="button" 
                   className="btn btn-success"
-                  onClick={() => setInfo(name, startDate)}
+                  onClick={() => setInfo(props.userName, props.startDate)}
                 >
-                  + Add a person
+                  {props.actionName}
                 </button>
               </div>
             </div>

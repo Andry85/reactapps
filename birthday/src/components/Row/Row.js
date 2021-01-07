@@ -10,8 +10,8 @@ function Row(props) {
     props.onDelete(id)
   }
 
-  const onEdit = (id) => {
-    props.onEdit(id)
+  const onEdit = (id, name, data) => {
+    props.onEdit(id, name, data)
   }
 
   return (
@@ -22,7 +22,7 @@ function Row(props) {
       <button 
         type="button" 
         className="btn btn-warning"
-        onClick={() => onEdit(props.id)}
+        onClick={() => onEdit(props.id, props.name, props.data)}
       >
         Edit
       </button>
